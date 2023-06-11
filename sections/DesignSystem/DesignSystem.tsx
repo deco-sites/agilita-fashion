@@ -303,10 +303,10 @@ const toVariables = (t: Theme): [string, string][] => {
 };
 
 const defaultTheme = {
-  "primary": "hsla(209, 28%, 21%, 1)",
-  "primary-content": "hsla(0, 0%, 100%, 1)",
-  "secondary": "hsla(104, 18%, 46%, 1)",
-  "secondary-content": "hsla(0, 0%, 100%, 1)",
+  "primary": "#ebebeb", 
+  "primary-content": "#737373",
+  "secondary": "rgb(139, 139, 139)",
+  "secondary-content": "rgb(185, 185, 185)",
   "accent": "hsla(8, 69%, 65%, 1)",
   "accent-content": "hsla(0, 0%, 100%, 1)",
   "neutral": "hsla(0, 0%, 47%, 1)",

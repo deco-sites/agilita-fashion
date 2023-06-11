@@ -61,6 +61,7 @@
               "deco-sites/std/loaders/vtex/user.ts",
               "deco-sites/std/loaders/vtex/wishlist.ts",
               "./islands/AddToCartButton.tsx",
+              "./islands/Alert.tsx",
               "./islands/HeaderButton.tsx",
               "./islands/HeaderModals.tsx",
               "./islands/HeaderSearchbar.tsx",
@@ -6853,6 +6854,30 @@
       ],
       "title": "deco-sites/std/packs/vtex/loaders/wishlist.ts@Props"
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9oZWFkZXIvQWxlcnQudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "alerts": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "Alerts"
+        },
+        "interval": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Autoplay interval",
+          "description": "time (in seconds) to start the carousel autoplay"
+        }
+      },
+      "required": [
+        "alerts"
+      ],
+      "title": "deco-sites/agilita-fashion/components/header/Alert.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9zdGQvcGFja3MvdnRleC90eXBlcy50cw==@SKU": {
       "type": "object",
       "properties": {
@@ -8210,7 +8235,7 @@
       "required": [],
       "title": "OptionalColors"
     },
-    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@Colors&bd89f381e0f8b6bef137442257131439": {
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@5457249de4768189d4c1901924a534ec&Colors": {
       "allOf": [
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@Colors"
@@ -8226,7 +8251,7 @@
           "required": []
         }
       ],
-      "title": "Colors&bd89f381e0f8b6bef137442257131439"
+      "title": "5457249de4768189d4c1901924a534ec&Colors"
     },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@Miscellaneous": {
       "type": "object",
@@ -8329,7 +8354,7 @@
       "type": "object",
       "properties": {
         "colors": {
-          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@Colors&bd89f381e0f8b6bef137442257131439",
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvRGVzaWduU3lzdGVtL0Rlc2lnblN5c3RlbS50c3g=@5457249de4768189d4c1901924a534ec&Colors",
           "title": "Colors"
         },
         "miscellaneous": {
@@ -10553,6 +10578,14 @@
           ],
           "title": "Canonical URL"
         },
+        "noIndexNoFollow": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Disable indexing",
+          "description": "In testing, you can use this to prevent search engines from indexing your site"
+        },
         "context": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tbWVyY2UvdHlwZXMudHM=@ProductDetailsPage|null|ProductListingPage|null",
           "title": "Context"
@@ -12448,6 +12481,27 @@
             "./islands/AddToCartButton.tsx"
           ],
           "default": "./islands/AddToCartButton.tsx"
+        }
+      }
+    },
+    "Li9pc2xhbmRzL0FsZXJ0LnRzeA==": {
+      "title": "./islands/Alert.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9oZWFkZXIvQWxlcnQudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "./islands/Alert.tsx"
+          ],
+          "default": "./islands/Alert.tsx"
         }
       }
     },
@@ -14422,6 +14476,9 @@
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL0FkZFRvQ2FydEJ1dHRvbi50c3g="
+        },
+        {
+          "$ref": "#/definitions/Li9pc2xhbmRzL0FsZXJ0LnRzeA=="
         },
         {
           "$ref": "#/definitions/Li9pc2xhbmRzL0hlYWRlckJ1dHRvbi50c3g="
