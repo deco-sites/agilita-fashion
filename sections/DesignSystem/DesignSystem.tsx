@@ -303,7 +303,7 @@ const toVariables = (t: Theme): [string, string][] => {
 };
 
 const defaultTheme = {
-  "primary": "#ebebeb", 
+  "primary": "#ebebeb",
   "primary-content": "#737373",
   "secondary": "rgb(139, 139, 139)",
   "secondary-content": "rgb(185, 185, 185)",
