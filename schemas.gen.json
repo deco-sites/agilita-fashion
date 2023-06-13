@@ -9886,6 +9886,13 @@
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA==@Form": {
       "type": "object",
       "properties": {
+        "placeholder2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Placeholder2"
+        },
         "placeholder": {
           "type": [
             "string",

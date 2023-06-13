@@ -1,6 +1,7 @@
 import Header from "$store/components/ui/SectionHeader.tsx";
 
 export interface Form {
+  placeholder2?: string;
   placeholder?: string;
   buttonText?: string;
   /** @format html */
@@ -26,6 +27,7 @@ const DEFAULT_PROPS: Props = {
   title: "",
   description: "",
   form: {
+    placeholder2: "Digite seu email",
     placeholder: "Digite seu email",
     buttonText: "Inscrever",
     helpText:
@@ -41,7 +43,10 @@ const DEFAULT_PROPS: Props = {
 };
 
 export default function Newsletter(props: Props) {
-  const { title, description, form, layout } = { ...DEFAULT_PROPS, ...props };
+  const { title, description, form, layout } = {
+    ...DEFAULT_PROPS,
+    ...props,
+  };
   const isReverse = layout?.content?.bgColor === "Reverse";
   const bordered = Boolean(layout?.content?.border);
 
@@ -59,12 +64,19 @@ export default function Newsletter(props: Props) {
     <form action="/" class="flex flex-col gap-4">
       <div class="flex flex-col lg:flex-row gap-3">
         <input
-          class="input input-bordered lg:w-80"
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 lg:w-[245px]"
+          type="text"
+          placeholder={form.placeholder2}
+        />
+        <input
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 lg:w-[245px]"
           type="text"
           placeholder={form.placeholder}
         />
         <button
-          class={`btn ${isReverse ? "btn-accent" : ""}`}
+          class={` btn w-[145px] text-black text-[12px] 
+          ${isReverse ? "btn-accent" : "bg-white"} rounded-none border 
+          border-black hover:bg-secondary hover:text-white `}
           type="submit"
         >
           {form.buttonText}
