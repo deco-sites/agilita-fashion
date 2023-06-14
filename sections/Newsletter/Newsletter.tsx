@@ -9,6 +9,8 @@ export interface Form {
 }
 
 export interface Props {
+  instagram: string;
+  mensagem: string;
   title?: string;
   /** @format textarea */
   description?: string;
@@ -24,6 +26,8 @@ export interface Props {
 }
 
 const DEFAULT_PROPS: Props = {
+  instagram: "",
+  mensagem: "",
   title: "",
   description: "",
   form: {
@@ -43,7 +47,7 @@ const DEFAULT_PROPS: Props = {
 };
 
 export default function Newsletter(props: Props) {
-  const { title, description, form, layout } = {
+  const { title, description, form, layout, instagram, mensagem } = {
     ...DEFAULT_PROPS,
     ...props,
   };
@@ -62,14 +66,14 @@ export default function Newsletter(props: Props) {
 
   const formLayout = form && (
     <form action="/" class="flex flex-col gap-4">
-      <div class="flex flex-col lg:flex-row gap-3">
+      <div class="flex flex-col justify-center items-center lg:flex-row gap-3">
         <input
-          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 lg:w-[245px]"
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px]"
           type="text"
           placeholder={form.placeholder2}
         />
         <input
-          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 lg:w-[245px]"
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px]"
           type="text"
           placeholder={form.placeholder}
         />
@@ -103,10 +107,14 @@ export default function Newsletter(props: Props) {
           : bgLayout
       } ${bordered ? "p-4 lg:p-8" : "p-0"}`}
     >
+      <div class="flex flex-col  text-center gap-4 mt-4  mb-4">
+        <span class="text-[16px] tracking-[4.2px]">{instagram}</span>
+        <span class="text-[12px]">  {mensagem}</span>
+      </div>
       {(!layout?.content?.alignment ||
         layout?.content?.alignment === "Center") && (
         <div
-          class={`container flex flex-col rounded p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
+          class={` flex flex-col rounded p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
         >
           {headerLayout}
           <div class="flex justify-center">
@@ -116,7 +124,7 @@ export default function Newsletter(props: Props) {
       )}
       {layout?.content?.alignment === "Left" && (
         <div
-          class={`container flex flex-col rounded p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
+          class={` flex flex-col rounded p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
         >
           {headerLayout}
           <div class="flex justify-start">
@@ -126,7 +134,7 @@ export default function Newsletter(props: Props) {
       )}
       {layout?.content?.alignment === "Side to side" && (
         <div
-          class={`container flex flex-col rounded justify-between lg:flex-row p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
+          class={` flex flex-col rounded justify-between lg:flex-row p-4 gap-6 lg:p-4 lg:gap-12 ${bgLayout}`}
         >
           {headerLayout}
           <div class="flex justify-center">
