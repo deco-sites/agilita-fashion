@@ -7625,6 +7625,10 @@
                   {
                     "type": "string",
                     "const": "Zoom"
+                  },
+                  {
+                    "type": "string",
+                    "const": "FacebookBlack"
                   }
                 ],
                 "type": "string",
@@ -8539,6 +8543,10 @@
             {
               "type": "string",
               "const": "Zoom"
+            },
+            {
+              "type": "string",
+              "const": "FacebookBlack"
             }
           ],
           "type": "string",
@@ -8628,6 +8636,20 @@
         "images": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Image[]",
           "title": "Images"
+        },
+        "instagramLink": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Instagram Link"
+        },
+        "facebookLink": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Facebook Link"
         }
       },
       "required": [],
@@ -9663,6 +9685,10 @@
             {
               "type": "string",
               "const": "Zoom"
+            },
+            {
+              "type": "string",
+              "const": "FacebookBlack"
             }
           ],
           "type": "string",

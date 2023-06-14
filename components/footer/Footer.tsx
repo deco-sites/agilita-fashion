@@ -72,9 +72,13 @@ export interface Image {
 export interface Props {
   sections?: Section[];
   images?: Image[];
+  instagramLink?: string;
+  facebookLink?: string;
 }
 
-function Footer({ sections = [], images = [] }: Props) {
+function Footer(
+  { sections = [], images = [], instagramLink, facebookLink }: Props,
+) {
   const list = useMemo(
     () =>
       images && images.length > 0
@@ -89,6 +93,30 @@ function Footer({ sections = [], images = [] }: Props) {
         <div class="container w-full flex flex-col  items-center divide-y divide-primary-content text-black">
           <FooterContainer>
             {/* Desktop view */}
+            <div class="w-full flex flex-row gap-4 justify-center items-center pb-4">
+              <a
+                href={facebookLink}
+              >
+                <Icon
+                  width={32}
+                  height={32}
+                  id="FacebookBlack"
+                />
+              </a>
+              <a
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram logo"
+              >
+                <Icon
+                  class="text-black"
+                  width={32}
+                  height={32}
+                  id="Instagram"
+                />
+              </a>
+            </div>
             <ul class="hidden sm:flex flex-row gap-32 tracking-[2px] ">
               {sections.map((section) => (
                 <li>
