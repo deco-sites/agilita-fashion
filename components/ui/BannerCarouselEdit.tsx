@@ -58,7 +58,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean },{titleDeskt
     <a
       href={href ?? "#"}
       aria-label={label}
-      class="flex itens-center justify-center w-full overflow-y-hidden "
+      class="flex itens-center justify-center w-full overflow-y-hidden px-8  lg:px-0"
     >
       <Picture preload={lcp}>
         <Source
@@ -136,7 +136,7 @@ function Dots({ images, interval = 3 }: Props) {
 function Buttons() {
   return (
     <>
-      <div class="flex  items-center justify-center pr-[550px] z-10 col-start-2 row-start-2">
+      <div class="hidden  items-center justify-center pr-[550px] z-10 col-start-2 row-start-2 lg:flex">
         <Slider.PrevButton class="btn btn-circle bg-transparent">
           <Icon
             class="text-black"
@@ -146,7 +146,7 @@ function Buttons() {
           />
         </Slider.PrevButton>
       </div>
-      <div class="flex items-center justify-center pl-[550px] z-10 col-start-2 row-start-2">
+      <div class="hidden items-center justify-center pl-[550px] z-10 col-start-2 row-start-2 lg:flex">
         <Slider.NextButton class="btn btn-circle bg-transparent">
           <Icon
             class="text-black"
@@ -174,7 +174,7 @@ function BannerCarousel(
       id={id}
       class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] mb-[45px] mt-[80px]"
     >
-      <Slider class="carousel carousel-center w-full container col-span-full row-span-full scrollbar-none ">
+      <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none ">
         {images?.map((image, index) => (
           <Slider.Item index={index} class="carousel-item w-full">
             <BannerItem image={image} lcp={index === 0 && preload} />
