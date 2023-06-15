@@ -105,11 +105,11 @@ export default function Newsletter(props: Props) {
         bordered
           ? isReverse ? "bg-secondary-content" : "bg-secondary"
           : bgLayout
-      } ${bordered ? "p-4 lg:p-8" : "p-0"}`}
+      } ${bordered ? "p-4 lg:p-8" : "p-8"}`}
     >
-      <div class="flex flex-col  text-center gap-4 mt-4  mb-4">
-        <span class="text-[16px] tracking-[4.2px]">{instagram}</span>
-        <span class="text-[12px]">  {mensagem}</span>
+      <div class="flex flex-col  text-center gap-5  font-light mb-8" >
+        <span class="text-[23px] tracking-[7px]">{instagram}</span>
+        <span class="text-[14px]">  {mensagem}</span>
       </div>
       {(!layout?.content?.alignment ||
         layout?.content?.alignment === "Center") && (
