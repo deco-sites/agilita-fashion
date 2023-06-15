@@ -93,7 +93,7 @@ function Footer(
         <div class="container w-full flex flex-col  items-center divide-y divide-primary-content text-black">
           <FooterContainer>
             {/* Desktop view */}
-            <div class="w-full flex flex-row gap-4 justify-center items-center pb-4">
+            <div class="w-full flex flex-row gap-8 justify-center items-center pb-4">
               <a
                 href={facebookLink}
               >
