@@ -23,7 +23,7 @@ function NavItem({ item }: { item: INavItem }) {
   return (
     <li class="group/edit flex items-center ">
       <a href={href} class="px-4 py-3">
-        <span class="hover:font-black text-[14px] text-[12px]">
+        <span class="hover:font-black text-[10x]">
           {label}
         </span>
       </a>
@@ -36,11 +36,11 @@ function NavItem({ item }: { item: INavItem }) {
             style={{ top: "0px", left: "0px" }}
           >
             <div class=" mb-[30px] min-w-[400px]">
-                    <ul class="flex flex-col gap-5 flex-wrap max-h-[250px] text-[12px] mt-4">
+                    <ul class="flex flex-col gap-5 flex-wrap max-h-[250px] text-[10px] mt-4">
                       {children?.map((leaf) => (
                         <li>
                           <a class="hover:underline" href={leaf.href}>
-                            <span class="text-base">{leaf.label}</span>
+                            <span class="text-[10px]">{leaf.label}</span>
                           </a>
                         </li>
                       ))}
