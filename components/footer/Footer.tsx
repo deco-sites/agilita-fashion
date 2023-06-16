@@ -1,6 +1,9 @@
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import Newsletter from "$store/islands/Newsletter.tsx";
 import type { ComponentChildren } from "preact";
+import Image from "deco-sites/std/components/Image.tsx";
+import type { Image as ImageType } from "deco-sites/std/components/types.ts";
+import { useMemo } from "preact/hooks";
 
 export type IconItem = { icon: AvailableIcons };
 export type StringItem = {
@@ -21,10 +24,10 @@ const isIcon = (item: Item): item is IconItem =>
 
 function SectionItem({ item }: { item: Item }) {
   return (
-    <span class="text-primary-content">
+    <span class="text-black text-[8px]">
       {isIcon(item)
         ? (
-          <div class="border-base-100 border border-solid py-1.5 px-2.5">
+          <div class="border-base-100  border border-solid py-1.5 px-2.5">
             <Icon
               id={item.icon}
               width={25}
@@ -41,6 +44,18 @@ function SectionItem({ item }: { item: Item }) {
     </span>
   );
 }
+const IMAGES = [
+  {
+    altText: "deco",
+    image:
+      "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/fe7cd8ba-c954-45d6-9282-ee7d8ca8e3c7",
+  },
+  {
+    altText: "deco",
+    image:
+      "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/239/637e8601-6b86-4979-aa97-68013a2a60fd",
+  },
+];
 
 function FooterContainer(
   { children, class: _class = "" }: {
@@ -48,36 +63,72 @@ function FooterContainer(
     children: ComponentChildren;
   },
 ) {
-  return <div class={`py-6 px-4 sm:py-12 sm:px-0 ${_class}`}>{children}</div>;
+  return <div class={`py-4 px-4 sm:px-0 ${_class}`}>{children}</div>;
 }
-
+export interface Image {
+  image: ImageType;
+  altText: string;
+}
 export interface Props {
   sections?: Section[];
+  images?: Image[];
+  instagramLink?: string;
+  facebookLink?: string;
 }
 
-function Footer({ sections = [] }: Props) {
-  return (
-    <footer class="w-full bg-primary flex flex-col divide-y divide-primary-content">
-      <div>
-        <div class="container w-full flex flex-col divide-y divide-primary-content">
-          <FooterContainer>
-            <Newsletter />
-          </FooterContainer>
+function Footer(
+  { sections = [], images = [], instagramLink, facebookLink }: Props,
+) {
+  const list = useMemo(
+    () =>
+      images && images.length > 0
+        ? images
+        : Array(20).fill(null).map((_, i) => IMAGES[i % 2]),
+    [],
+  );
 
+  return (
+    <footer class="w-full bg-white flex flex-col   divide-primary-content">
+      <div>
+        <div class="container w-full flex flex-col  items-center divide-y divide-primary-content text-black">
           <FooterContainer>
             {/* Desktop view */}
-            <ul class="hidden sm:flex flex-row gap-20">
+            <div class="w-full flex flex-row gap-8 justify-center items-center pb-4">
+              <a
+                href={facebookLink}
+              >
+                <Icon
+                  width={32}
+                  height={32}
+                  id="FacebookBlack"
+                />
+              </a>
+              <a
+                href={instagramLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram logo"
+              >
+                <Icon
+                  class="text-black"
+                  width={32}
+                  height={32}
+                  id="Instagram"
+                />
+              </a>
+            </div>
+            <ul class="hidden sm:flex flex-row gap-32 tracking-[2px] ">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <span class="font-medium text-xl text-primary-content">
+                    <span class="font-medium text-[12px] ">
                       {section.label}
                     </span>
 
                     <ul
                       class={`flex ${
                         isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                      } gap-2 pt-2 flex-wrap`}
+                      } flex-wrap`}
                     >
                       {section.children.map((item) => (
                         <li>
@@ -91,10 +142,10 @@ function Footer({ sections = [] }: Props) {
             </ul>
 
             {/* Mobile view */}
-            <ul class="flex flex-col sm:hidden sm:flex-row gap-4">
+            <ul class="flex flex-col sm:hidden sm:flex-row gap-4 tracking-[2px] ">
               {sections.map((section) => (
                 <li>
-                  <span class="text-primary-content">
+                  <span class="text-black">
                     <details>
                       <summary>
                         {section.label}
@@ -118,12 +169,25 @@ function Footer({ sections = [] }: Props) {
             </ul>
           </FooterContainer>
         </div>
+        <FooterContainer class="w-full text-center items-center">
+          {list.map((element) => (
+            <div class="inline-block align-middle">
+              <div class="flex h-full items-center justify-center">
+                <img
+                  src={element.image}
+                  alt={element.altText || ""}
+                  class="max-w-[50px] mx-4 max-h-full w-full"
+                />
+              </div>
+            </div>
+          ))}
+        </FooterContainer>
       </div>
 
       <div>
         <div class="container w-full">
           <FooterContainer class="flex justify-between w-full">
-            <span class="flex items-center gap-1 text-primary-content">
+            <span class="flex items-center gap-1 text-black">
               Powered by{" "}
               <a
                 href="https://www.deco.cx"
@@ -142,7 +206,7 @@ function Footer({ sections = [] }: Props) {
                   aria-label="Instagram logo"
                 >
                   <Icon
-                    class="text-primary-content"
+                    class="text-black"
                     width={32}
                     height={32}
                     id="Instagram"
@@ -157,7 +221,7 @@ function Footer({ sections = [] }: Props) {
                   aria-label="Discord logo"
                 >
                   <Icon
-                    class="text-primary-content"
+                    class="text-black"
                     width={32}
                     height={32}
                     id="Discord"

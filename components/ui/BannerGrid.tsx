@@ -89,7 +89,7 @@ export default function BannnerGrid({
   banners = [],
 }: Props) {
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto">
+    <section class="container w-full md:px-0 mx-auto">
       {title &&
         (
           <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
@@ -116,21 +116,19 @@ export default function BannnerGrid({
               <Source
                 media="(max-width: 767px)"
                 src={srcMobile}
-                width={100}
-                height={100}
+                width={355}
+                height={345}
               />
               <Source
                 media="(min-width: 768px)"
                 src={srcDesktop ? srcDesktop : srcMobile}
-                width={250}
-                height={250}
+                width={850}
+                height={830}
               />
               <img
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 30vw"
+                class="object-cover  inline-block w-full"
                 src={srcMobile}
                 alt={alt}
-                decoding="async"
                 loading="lazy"
               />
             </Picture>

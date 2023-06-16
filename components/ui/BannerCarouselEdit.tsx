@@ -11,15 +11,24 @@ export interface Banner {
   desktop: LiveImage;
   /** @description mobile otimized image */
   mobile: LiveImage;
+  /** @description mobile otimized image */
+  title?: string;
+  /** @description mobile otimized image */
+  titleSub?: string;
+
   /** @description Image's alt text */
   alt: string;
   /** @description when user clicks on the image, go to this link */
-  href: string;
+  href?: string;
   /** @description Button label */
-  label: string;
+  label?: string;
 }
 
 export interface Props {
+  titleDesktop?: boolean;
+  titleSubDesktop?: boolean;
+  titleMobile?: boolean;
+  titleSubMobile?: boolean;
   images?: Banner[];
   /**
    * @description Check this option when this banner is the biggest image on the screen for image optimizations
@@ -32,7 +41,10 @@ export interface Props {
   interval?: number;
 }
 
-function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
+function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean },{titleDesktop,
+  titleMobile,
+  titleSubDesktop,
+  titleSubMobile}:Props ) {
   const {
     alt,
     mobile,
@@ -42,34 +54,50 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   } = image;
 
   return (
+    <div class="flex flex-col itens-center justify-center w-full overflow-y-hidden"> 
     <a
       href={href ?? "#"}
       aria-label={label}
-      class="relative overflow-y-hidden w-full"
+      class="flex itens-center justify-center w-full overflow-y-hidden px-8  lg:px-0"
     >
       <Picture preload={lcp}>
         <Source
           media="(max-width: 767px)"
           fetchPriority={lcp ? "high" : "auto"}
           src={mobile}
-          width={360}
-          height={800}
+          width={480}
+          height={720}
         />
         <Source
           media="(min-width: 768px)"
           fetchPriority={lcp ? "high" : "auto"}
           src={desktop}
-          width={1440}
-          height={800}
+          width={480}
+          height={720}
         />
         <img
-          class="object-cover w-full inline-block"
+          class="object-cover"
           loading={lcp ? "eager" : "lazy"}
           src={desktop}
           alt={alt}
         />
       </Picture>
+  
     </a>
+    
+    <div class="flex w-full items-center gap-4 flex-col justify-center my-[15px] ">
+    <span
+      class={`tracking-[4.2px]  text-[14px]`}
+    >
+      {image.title}
+    </span>
+    <span
+      class={`font-normal text-[10px]`}
+    >
+      {image.titleSub}
+    </span>
+  </div>
+  </div>
   );
 }
 
@@ -108,20 +136,20 @@ function Dots({ images, interval = 3 }: Props) {
 function Buttons() {
   return (
     <>
-      <div class="flex items-center justify-center z-10 col-start-1 row-start-2">
+      <div class="hidden  items-center justify-center pr-[550px] z-10 col-start-2 row-start-2 lg:flex">
         <Slider.PrevButton class="btn btn-circle bg-transparent">
           <Icon
-            class="text-base-100"
+            class="text-black"
             size={15}
             id="ChevronLeft"
             strokeWidth={3}
           />
         </Slider.PrevButton>
       </div>
-      <div class="flex items-center justify-center z-10 col-start-3 row-start-2">
+      <div class="hidden items-center justify-center pl-[550px] z-10 col-start-2 row-start-2 lg:flex">
         <Slider.NextButton class="btn btn-circle bg-transparent">
           <Icon
-            class="text-base-100"
+            class="text-black"
             size={15}
             id="ChevronRight"
             strokeWidth={3}
@@ -132,18 +160,25 @@ function Buttons() {
   );
 }
 
-function BannerCarousel({ images, preload, interval }: Props) {
+function BannerCarousel(
+  {
+    images,
+    preload,
+    interval,
+  }: Props,
+) {
   const id = useId();
 
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] mb-[45px]"
+      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] mb-[45px] mt-[80px]"
     >
-      <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none gap-6">
+      <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none ">
         {images?.map((image, index) => (
           <Slider.Item index={index} class="carousel-item w-full">
             <BannerItem image={image} lcp={index === 0 && preload} />
+           
           </Slider.Item>
         ))}
       </Slider>

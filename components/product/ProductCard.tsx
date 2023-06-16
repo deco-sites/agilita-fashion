@@ -39,6 +39,7 @@ interface Props {
       showSkuSelector?: boolean;
       showCardShadow?: boolean;
       showCta?: boolean;
+      showDiscount?: boolean;
     };
   };
 }
@@ -61,6 +62,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
     isVariantOf,
   } = product;
   const productGroupID = isVariantOf?.productGroupID;
+
   const [front, back] = images ?? [];
   const { listPrice, price, installments } = useOffer(offers);
   const possibilities = useVariantPossibilities(product);
@@ -98,7 +100,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="w-full bg-[#464646] h-[40px] pt-[5px] text-white text-center"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -106,7 +108,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
 
   return (
     <div
-      class={`card card-compact group w-full ${
+      class={`card rounded-none card-compact group w-full  ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}`}
       data-deco="view-product"
@@ -122,15 +124,29 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               ? "left-2"
               : "right-2"
           }
-          ${
-            l?.onMouseOver?.showFavoriteIcon
-              ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
-          }
+          ${l?.onMouseOver?.showFavoriteIcon ? "flex" : "lg:hidden"}
         `}
         >
           <WishlistIcon productGroupID={productGroupID} productID={productID} />
         </div>
+
+        {listPrice !== price
+          ? (
+            <div
+              class={`absolute top-2 z-10 text-[10px]  text-white py-1 px-2 bg-[#46464692] 
+          ${
+                l?.elementsPositions?.favoriteIcon !== "Top left"
+                  ? "left-2"
+                  : "right-2"
+              }
+        
+        `}
+            >
+              {(price!/listPrice!*100)}%
+            </div>
+          )
+          : ""}
+""
         {/* Product Images */}
         <a
           href={url && relative(url)}
@@ -143,7 +159,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
             width={WIDTH}
             height={HEIGHT}
             class={`
-              absolute rounded w-full
+              absolute  w-full
               ${
               (!l?.onMouseOver?.image ||
                   l?.onMouseOver?.image == "Change image")
@@ -168,7 +184,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               alt={back?.alternateName ?? front.alternateName}
               width={WIDTH}
               height={HEIGHT}
-              class="absolute transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
+              class="absolute transition-opacity w-full opacity-0 lg:group-hover:opacity-100"
               sizes="(max-width: 640px) 50vw, 20vw"
               loading="lazy"
               decoding="async"
@@ -177,7 +193,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         </a>
         <figcaption
           class={`
-          absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2
+          absolute bottom-0 left-0 w-full flex flex-col gap-3
           ${
             l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
               ? "transition-opacity opacity-0 lg:group-hover:opacity-100"
@@ -215,18 +231,18 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
         {l?.hide.productName && l?.hide.productDescription
           ? ""
           : (
-            <div class="flex flex-col gap-0">
+            <div class="flex flex-col gap-0 ">
               {l?.hide.productName
                 ? ""
                 : (
-                  <h2 class="truncate text-base lg:text-lg text-base-content">
+                  <h2 class="truncate  text-black lg:text-lg  text-black">
                     {name}
                   </h2>
                 )}
               {l?.hide.productDescription
                 ? ""
                 : (
-                  <p class="truncate text-sm lg:text-sm text-neutral">
+                  <p class="truncate text-sm lg:text-sm  text-black">
                     {product.description}
                   </p>
                 )}
@@ -242,23 +258,24 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
               } ${align === "center" ? "justify-center" : "justify-start"}`}
             >
               <div
-                class={`line-through text-base-300 text-xs ${
-                  l?.basics?.oldPriceSize === "Normal" ? "lg:text-xl" : ""
+                class={`line-through text-base-300 text-[12px] ${
+                  l?.basics?.oldPriceSize === "Normal" ? "text-[12px]" : ""
                 }`}
               >
-                {formatPrice(listPrice, offers!.priceCurrency!)}
+                {listPrice !== price
+                  ? formatPrice(listPrice, offers!.priceCurrency!)
+                  : ""}
               </div>
-              <div class="text-accent text-base lg:text-xl">
+
+              <div class="text-black text-[12px]">
                 {formatPrice(price, offers!.priceCurrency!)}
               </div>
             </div>
-            {l?.hide.installments
-              ? ""
-              : (
-                <div class="text-base-300 text-sm lg:text-base">
-                  ou {installments}
-                </div>
-              )}
+            {l?.hide.installments ? "" : (
+              <div class="text-base-300 text-[12px]">
+                ou {installments}
+              </div>
+            )}
           </div>
         )}
 

@@ -47,7 +47,7 @@ export interface Props {
     black: LiveImage;
     white: LiveImage;
     icon: LiveImage;
-    iconWhite:LiveImage;
+    iconWhite: LiveImage;
   };
 }
 
@@ -74,9 +74,36 @@ function colorHeader() {
     } else {
       header1.classList.remove("hidden");
       header2.classList.add("hidden");
-
     }
-  });}
+  });
+  globalThis.addEventListener("scroll", () => {
+    if (!header1) {
+      header1 = document.querySelector("div[header-Position]");
+      if (!header1) return;
+    }
+
+    if (!header1) return;
+    if (!header2) {
+      header2 = document.querySelector("div[header-2]");
+      if (!header2) return;
+    }
+
+    if (!header2) return;
+
+    if (window.location.pathname !== "/") {
+      header1.classList.remove("bg-transparent ");
+      header1.classList.remove("absolute");
+      header1.classList.add("bg-white");
+      header1.classList.add("relative");
+ 
+    } else {
+      header1.classList.add("bg-transparent ");
+      header1.classList.add("absolute");
+      header1.classList.remove("bg-white");
+      header1.classList.remove("relative");
+    }
+  });
+}
 
 function Header({
   alerts,
@@ -89,21 +116,17 @@ function Header({
   const searchbar = { ..._searchbar, products, suggestions };
   return (
     <>
-     <script
+      <script
         dangerouslySetInnerHTML={{ __html: `(${colorHeader.toString()})()` }}
       />
       <header>
-        <div class="bg-transparent  absolute w-full z-50 "
-           header-Position="">
+        <div class="bg-transparent  absolute w-full z-50 " header-Position="">
           <Alert alerts={alerts} />
           <Navbar items={navItems} searchbar={searchbar} logo={logo} />
-          
         </div>
 
-        <div class="hidden bg-white  fixed w-full z-50 "
-           header-2="">
+        <div class="hidden bg-white  fixed w-full z-50 " header-2="">
           <NavbarScroll items={navItems} searchbar={searchbar} logo={logo} />
-          
         </div>
 
         <Modals
@@ -111,7 +134,6 @@ function Header({
           searchbar={searchbar}
         />
       </header>
-      
     </>
   );
 }

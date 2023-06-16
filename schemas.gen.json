@@ -93,13 +93,17 @@
               "deco-sites/agilita-fashion/sections/Footer/Footer.tsx",
               "deco-sites/agilita-fashion/sections/Header/Header.tsx",
               "deco-sites/agilita-fashion/sections/Images/BannerGrid.tsx",
+              "deco-sites/agilita-fashion/sections/Images/BannerMovie.tsx",
+              "deco-sites/agilita-fashion/sections/Images/BannerSolo.tsx",
               "deco-sites/agilita-fashion/sections/Images/Carousel.tsx",
+              "deco-sites/agilita-fashion/sections/Images/CarouselEdit.tsx",
               "deco-sites/agilita-fashion/sections/Images/ImageGallery.tsx",
               "deco-sites/agilita-fashion/sections/Images/ShoppableBanner.tsx",
               "deco-sites/agilita-fashion/sections/Links/LinkTree.tsx",
               "deco-sites/agilita-fashion/sections/Links/Shortcuts.tsx",
               "deco-sites/agilita-fashion/sections/Miscellaneous/CampaignTimer.tsx",
               "deco-sites/agilita-fashion/sections/Miscellaneous/CookieConsent.tsx",
+              "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx",
               "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx",
               "deco-sites/agilita-fashion/sections/Product/ProductDetails.tsx",
               "deco-sites/agilita-fashion/sections/Product/ProductShelf.tsx",
@@ -7092,10 +7096,6 @@
           ],
           "title": "Path"
         },
-        "layout": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page",
-          "title": "Layout"
-        },
         "sections": {
           "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9zZWN0aW9uLnRz@Section[]",
           "title": "Sections"
@@ -7625,6 +7625,10 @@
                   {
                     "type": "string",
                     "const": "Zoom"
+                  },
+                  {
+                    "type": "string",
+                    "const": "FacebookBlack"
                   }
                 ],
                 "type": "string",
@@ -8539,6 +8543,10 @@
             {
               "type": "string",
               "const": "Zoom"
+            },
+            {
+              "type": "string",
+              "const": "FacebookBlack"
             }
           ],
           "type": "string",
@@ -8593,12 +8601,55 @@
       },
       "title": "Section[]"
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Image": {
+      "type": "object",
+      "properties": {
+        "image": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Image"
+        },
+        "altText": {
+          "type": "string",
+          "title": "Alt Text"
+        }
+      },
+      "required": [
+        "image",
+        "altText"
+      ],
+      "title": "Image"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Image[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Image"
+      },
+      "title": "Image[]"
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Props": {
       "type": "object",
       "properties": {
         "sections": {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Section[]",
           "title": "Sections"
+        },
+        "images": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9mb290ZXIvRm9vdGVyLnRzeA==@Image[]",
+          "title": "Images"
+        },
+        "instagramLink": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Instagram Link"
+        },
+        "facebookLink": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Facebook Link"
         }
       },
       "required": [],
@@ -8965,6 +9016,197 @@
       ],
       "title": "deco-sites/agilita-fashion/components/ui/BannerGrid.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video": {
+      "type": "string",
+      "format": "video-uri",
+      "title": "Video"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJNb3ZpZS50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "itemsPerLine": {
+          "type": "object",
+          "properties": {
+            "mobile": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "const": 1
+                },
+                {
+                  "type": "number",
+                  "const": 2
+                }
+              ],
+              "type": "number",
+              "title": "Mobile"
+            },
+            "desktop": {
+              "anyOf": [
+                {
+                  "type": "number",
+                  "const": 1
+                },
+                {
+                  "type": "number",
+                  "const": 2
+                },
+                {
+                  "type": "number",
+                  "const": 4
+                },
+                {
+                  "type": "number",
+                  "const": 6
+                },
+                {
+                  "type": "number",
+                  "const": 8
+                }
+              ],
+              "type": "number",
+              "title": "Desktop"
+            }
+          },
+          "required": [],
+          "title": "Items Per Line",
+          "description": "Default is 2 for mobile and all for desktop"
+        },
+        "borderRadius": {
+          "type": "object",
+          "properties": {
+            "mobile": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "none"
+                },
+                {
+                  "type": "string",
+                  "const": "sm"
+                },
+                {
+                  "type": "string",
+                  "const": "md"
+                },
+                {
+                  "type": "string",
+                  "const": "lg"
+                },
+                {
+                  "type": "string",
+                  "const": "xl"
+                },
+                {
+                  "type": "string",
+                  "const": "2xl"
+                },
+                {
+                  "type": "string",
+                  "const": "3xl"
+                },
+                {
+                  "type": "string",
+                  "const": "full"
+                }
+              ],
+              "type": "string",
+              "title": "Mobile"
+            },
+            "desktop": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "none"
+                },
+                {
+                  "type": "string",
+                  "const": "sm"
+                },
+                {
+                  "type": "string",
+                  "const": "md"
+                },
+                {
+                  "type": "string",
+                  "const": "lg"
+                },
+                {
+                  "type": "string",
+                  "const": "xl"
+                },
+                {
+                  "type": "string",
+                  "const": "2xl"
+                },
+                {
+                  "type": "string",
+                  "const": "3xl"
+                },
+                {
+                  "type": "string",
+                  "const": "full"
+                }
+              ],
+              "type": "string",
+              "title": "Desktop"
+            }
+          },
+          "required": [],
+          "title": "Border Radius",
+          "description": "Item's border radius in px"
+        },
+        "srcDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "title": "Src Desktop"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Image alt text",
+          "title": "Alt"
+        },
+        "href": {
+          "type": "string",
+          "description": "When you click you go to",
+          "title": "Href"
+        },
+        "srcMobile": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Video",
+          "title": "Src Mobile"
+        }
+      },
+      "required": [
+        "itemsPerLine",
+        "borderRadius",
+        "alt",
+        "href"
+      ],
+      "title": "deco-sites/agilita-fashion/components/ui/BannerMovie.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJTb2xvLnRzeA==@Props": {
+      "type": "object",
+      "properties": {
+        "srcDesktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "title": "Src Desktop"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Image alt text",
+          "title": "Alt"
+        },
+        "href": {
+          "type": "string",
+          "description": "When you click you go to",
+          "title": "Href"
+        }
+      },
+      "required": [
+        "alt",
+        "href"
+      ],
+      "title": "deco-sites/agilita-fashion/components/ui/BannerSolo.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbC50c3g=@Banner": {
       "type": "object",
       "properties": {
@@ -8983,39 +9225,23 @@
           "description": "Image's alt text",
           "title": "Alt"
         },
-        "action": {
-          "type": "object",
-          "properties": {
-            "href": {
-              "type": "string",
-              "title": "Href"
-            },
-            "title": {
-              "type": "string",
-              "title": "Title"
-            },
-            "subTitle": {
-              "type": "string",
-              "title": "Sub Title"
-            },
-            "label": {
-              "type": "string",
-              "title": "Label"
-            }
-          },
-          "required": [
-            "href",
-            "title",
-            "subTitle",
-            "label"
-          ],
-          "title": "Action"
+        "href": {
+          "type": "string",
+          "description": "when user clicks on the image, go to this link",
+          "title": "Href"
+        },
+        "label": {
+          "type": "string",
+          "description": "Button label",
+          "title": "Label"
         }
       },
       "required": [
         "desktop",
         "mobile",
-        "alt"
+        "alt",
+        "href",
+        "label"
       ],
       "title": "Banner"
     },
@@ -9052,6 +9278,126 @@
       },
       "required": [],
       "title": "deco-sites/agilita-fashion/components/ui/BannerCarousel.tsx@Props"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Banner": {
+      "type": "object",
+      "properties": {
+        "desktop": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "desktop otimized image",
+          "title": "Desktop"
+        },
+        "mobile": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9zdGQvY29tcG9uZW50cy90eXBlcy50cw==@Image",
+          "description": "mobile otimized image",
+          "title": "Mobile"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "mobile otimized image",
+          "title": "Title"
+        },
+        "titleSub": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "mobile otimized image",
+          "title": "Title Sub"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Image's alt text",
+          "title": "Alt"
+        },
+        "href": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "when user clicks on the image, go to this link",
+          "title": "Href"
+        },
+        "label": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Button label",
+          "title": "Label"
+        }
+      },
+      "required": [
+        "desktop",
+        "mobile",
+        "alt"
+      ],
+      "title": "Banner"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Banner[]": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Banner"
+      },
+      "title": "Banner[]"
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Props": {
+      "type": "object",
+      "properties": {
+        "titleDesktop": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Title Desktop"
+        },
+        "titleSubDesktop": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Title Sub Desktop"
+        },
+        "titleMobile": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Title Mobile"
+        },
+        "titleSubMobile": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "title": "Title Sub Mobile"
+        },
+        "images": {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Banner[]",
+          "title": "Images"
+        },
+        "preload": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Check this option when this banner is the biggest image on the screen for image optimizations",
+          "title": "Preload"
+        },
+        "interval": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "title": "Autoplay interval",
+          "description": "time (in seconds) to start the carousel autoplay"
+        }
+      },
+      "required": [],
+      "title": "deco-sites/agilita-fashion/components/ui/BannerCarouselEdit.tsx@Props"
     },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0ltYWdlR2FsbGVyeS50c3g=@Banner": {
       "type": "object",
@@ -9634,6 +9980,10 @@
             {
               "type": "string",
               "const": "Zoom"
+            },
+            {
+              "type": "string",
+              "const": "FacebookBlack"
             }
           ],
           "type": "string",
@@ -9883,9 +10233,29 @@
       "required": [],
       "title": "deco-sites/agilita-fashion/components/ui/CookieConsent.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9DYW1wVGV4dC50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "deco-sites/agilita-fashion/components/ui/CampText.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA==@Form": {
       "type": "object",
       "properties": {
+        "placeholder2": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Placeholder2"
+        },
         "placeholder": {
           "type": [
             "string",
@@ -9915,6 +10285,14 @@
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA==@Props": {
       "type": "object",
       "properties": {
+        "instagram": {
+          "type": "string",
+          "title": "Instagram"
+        },
+        "mensagem": {
+          "type": "string",
+          "title": "Mensagem"
+        },
         "title": {
           "type": [
             "string",
@@ -10002,7 +10380,10 @@
           "title": "Layout"
         }
       },
-      "required": [],
+      "required": [
+        "instagram",
+        "mensagem"
+      ],
       "title": "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx@Props"
     },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy9wcm9kdWN0L1Byb2R1Y3REZXRhaWxzLnRzeA==@Props": {
@@ -10266,6 +10647,13 @@
                     "null"
                   ],
                   "title": "Show Cta"
+                },
+                "showDiscount": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Discount"
                 }
               },
               "required": [],
@@ -11026,7 +11414,7 @@
       ],
       "title": "WorkflowRef"
     },
-    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@2dc3ea494e366f0c07f2bf4cd27907ef|WorkflowRef": {
+    "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowRef|bfe6ccba30e7af0b18b9e42b06cabfe4": {
       "anyOf": [
         {
           "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowRef"
@@ -11044,13 +11432,13 @@
           ]
         }
       ],
-      "title": "2dc3ea494e366f0c07f2bf4cd27907ef|WorkflowRef"
+      "title": "WorkflowRef|bfe6ccba30e7af0b18b9e42b06cabfe4"
     },
     "ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@Props": {
       "type": "object",
       "properties": {
         "workflow": {
-          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@2dc3ea494e366f0c07f2bf4cd27907ef|WorkflowRef",
+          "$ref": "#/definitions/ZGVjby1jeC9saXZlL2FjdGlvbnMvd29ya2Zsb3dzL3N0YXJ0LnRz@WorkflowRef|bfe6ccba30e7af0b18b9e42b06cabfe4",
           "title": "Workflow"
         },
         "id": {
@@ -13126,6 +13514,48 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Jhbm5lck1vdmllLnRzeA==": {
+      "title": "deco-sites/agilita-fashion/sections/Images/BannerMovie.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJNb3ZpZS50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/agilita-fashion/sections/Images/BannerMovie.tsx"
+          ],
+          "default": "deco-sites/agilita-fashion/sections/Images/BannerMovie.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Jhbm5lclNvbG8udHN4": {
+      "title": "deco-sites/agilita-fashion/sections/Images/BannerSolo.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJTb2xvLnRzeA==@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/agilita-fashion/sections/Images/BannerSolo.tsx"
+          ],
+          "default": "deco-sites/agilita-fashion/sections/Images/BannerSolo.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Nhcm91c2VsLnRzeA==": {
       "title": "deco-sites/agilita-fashion/sections/Images/Carousel.tsx",
       "type": "object",
@@ -13144,6 +13574,27 @@
             "deco-sites/agilita-fashion/sections/Images/Carousel.tsx"
           ],
           "default": "deco-sites/agilita-fashion/sections/Images/Carousel.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Nhcm91c2VsRWRpdC50c3g=": {
+      "title": "deco-sites/agilita-fashion/sections/Images/CarouselEdit.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9CYW5uZXJDYXJvdXNlbEVkaXQudHN4@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/agilita-fashion/sections/Images/CarouselEdit.tsx"
+          ],
+          "default": "deco-sites/agilita-fashion/sections/Images/CarouselEdit.tsx"
         }
       }
     },
@@ -13270,6 +13721,27 @@
             "deco-sites/agilita-fashion/sections/Miscellaneous/CookieConsent.tsx"
           ],
           "default": "deco-sites/agilita-fashion/sections/Miscellaneous/CookieConsent.tsx"
+        }
+      }
+    },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9DYW1wVGV4dC50c3g=": {
+      "title": "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9DYW1wVGV4dC50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx"
+          ],
+          "default": "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx"
         }
       }
     },
@@ -14609,7 +15081,16 @@
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Jhbm5lckdyaWQudHN4"
         },
         {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Jhbm5lck1vdmllLnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Jhbm5lclNvbG8udHN4"
+        },
+        {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Nhcm91c2VsLnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0Nhcm91c2VsRWRpdC50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvSW1hZ2VzL0ltYWdlR2FsbGVyeS50c3g="
@@ -14628,6 +15109,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTWlzY2VsbGFuZW91cy9Db29raWVDb25zZW50LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9DYW1wVGV4dC50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA=="
@@ -14811,7 +15295,8 @@
       "required": [
         "./routes/_middleware.ts",
         "./routes/[...catchall].tsx",
-        "./routes/index.tsx"
+        "./routes/index.tsx",
+        "./routes/live/previews/index.tsx"
       ],
       "properties": {
         "./routes/_middleware.ts": {
@@ -14832,6 +15317,13 @@
           "anyOf": [
             {
               "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9oYW5kbGVyLnRz@Handler"
+            }
+          ]
+        },
+        "./routes/live/previews/index.tsx": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ZGVjby1jeC9saXZlL2Jsb2Nrcy9wYWdlLnRz@Page"
             }
           ]
         }
