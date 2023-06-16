@@ -9,12 +9,14 @@ const displayCart = signal(false);
 const displayMenu = signal(false);
 const displaySearchbar = signal(false);
 const displayAlert = signal(false);
+const displayModal = signal(false);
 
 const state = {
   displayCart,
   displayMenu,
   displaySearchbar,
   displayAlert,
+  displayModal
 };
 
 export const useUI = () => state;

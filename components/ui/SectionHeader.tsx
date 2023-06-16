@@ -19,13 +19,13 @@ function Header(props: Props) {
             {props.title &&
               (
                 <h1
-                  class={`text-[35px] leading-8 lg:leading-10 tracking-[8px] font-light mt-[20px]
+                  class={`text-[35px] leading-8 lg:leading-10 tracking-[8px]  mt-[20px]
                   ${
                     props.colorReverse
                       ? "text-primary-content"
                       : "text-base-content"
                   }
-                  ${props.fontSize === "Normal" ? "lg:ttext-[35px]" : "lg:text-[35px]"}
+                  ${props.fontSize === "Normal" ? "lg:text-[35px]" : "lg:text-[35px]"}
                 `}
                 >
                   {props.title.toUpperCase()}
