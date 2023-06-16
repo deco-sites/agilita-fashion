@@ -103,6 +103,7 @@
               "deco-sites/agilita-fashion/sections/Links/Shortcuts.tsx",
               "deco-sites/agilita-fashion/sections/Miscellaneous/CampaignTimer.tsx",
               "deco-sites/agilita-fashion/sections/Miscellaneous/CookieConsent.tsx",
+              "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx",
               "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx",
               "deco-sites/agilita-fashion/sections/Product/ProductDetails.tsx",
               "deco-sites/agilita-fashion/sections/Product/ProductShelf.tsx",
@@ -10232,6 +10233,19 @@
       "required": [],
       "title": "deco-sites/agilita-fashion/components/ui/CookieConsent.tsx@Props"
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9DYW1wVGV4dC50c3g=@Props": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "title": "Text"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "deco-sites/agilita-fashion/components/ui/CampText.tsx@Props"
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA==@Form": {
       "type": "object",
       "properties": {
@@ -10633,6 +10647,13 @@
                     "null"
                   ],
                   "title": "Show Cta"
+                },
+                "showDiscount": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ],
+                  "title": "Show Discount"
                 }
               },
               "required": [],
@@ -13703,6 +13724,27 @@
         }
       }
     },
+    "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9DYW1wVGV4dC50c3g=": {
+      "title": "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vY29tcG9uZW50cy91aS9DYW1wVGV4dC50c3g=@Props"
+        }
+      ],
+      "required": [
+        "__resolveType"
+      ],
+      "properties": {
+        "__resolveType": {
+          "type": "string",
+          "enum": [
+            "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx"
+          ],
+          "default": "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx"
+        }
+      }
+    },
     "ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA==": {
       "title": "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx",
       "type": "object",
@@ -15067,6 +15109,9 @@
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTWlzY2VsbGFuZW91cy9Db29raWVDb25zZW50LnRzeA=="
+        },
+        {
+          "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9DYW1wVGV4dC50c3g="
         },
         {
           "$ref": "#/definitions/ZGVjby1zaXRlcy9hZ2lsaXRhLWZhc2hpb24vc2VjdGlvbnMvTmV3c2xldHRlci9OZXdzbGV0dGVyLnRzeA=="

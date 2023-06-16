@@ -28,7 +28,7 @@ function Header(props: Props) {
                   ${props.fontSize === "Normal" ? "lg:ttext-[35px]" : "lg:text-[35px]"}
                 `}
                 >
-                  {props.title}
+                  {props.title.toUpperCase()}
                 </h1>
               )}
             {props.description &&

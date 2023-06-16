@@ -38,13 +38,14 @@ import * as $$$$$$$$16 from "./sections/Links/LinkTree.tsx";
 import * as $$$$$$$$17 from "./sections/Links/Shortcuts.tsx";
 import * as $$$$$$$$18 from "./sections/Miscellaneous/CampaignTimer.tsx";
 import * as $$$$$$$$19 from "./sections/Miscellaneous/CookieConsent.tsx";
-import * as $$$$$$$$20 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$$$21 from "./sections/Product/ProductDetails.tsx";
-import * as $$$$$$$$22 from "./sections/Product/ProductShelf.tsx";
-import * as $$$$$$$$23 from "./sections/Product/SearchResult.tsx";
-import * as $$$$$$$$24 from "./sections/Product/Wishlist.tsx";
-import * as $$$$$$$$25 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$$$26 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$$$20 from "./sections/Newsletter/CampText.tsx";
+import * as $$$$$$$$21 from "./sections/Newsletter/Newsletter.tsx";
+import * as $$$$$$$$22 from "./sections/Product/ProductDetails.tsx";
+import * as $$$$$$$$23 from "./sections/Product/ProductShelf.tsx";
+import * as $$$$$$$$24 from "./sections/Product/SearchResult.tsx";
+import * as $$$$$$$$25 from "./sections/Product/Wishlist.tsx";
+import * as $$$$$$$$26 from "./sections/Social/InstagramPosts.tsx";
+import * as $$$$$$$$27 from "./sections/Social/WhatsApp.tsx";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
 import * as $live_invoke from "$live/routes/live/invoke/index.ts";
@@ -218,14 +219,15 @@ const manifest = {
       $$$$$$$$18,
     "deco-sites/agilita-fashion/sections/Miscellaneous/CookieConsent.tsx":
       $$$$$$$$19,
-    "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx": $$$$$$$$20,
+    "deco-sites/agilita-fashion/sections/Newsletter/CampText.tsx": $$$$$$$$20,
+    "deco-sites/agilita-fashion/sections/Newsletter/Newsletter.tsx": $$$$$$$$21,
     "deco-sites/agilita-fashion/sections/Product/ProductDetails.tsx":
-      $$$$$$$$21,
-    "deco-sites/agilita-fashion/sections/Product/ProductShelf.tsx": $$$$$$$$22,
-    "deco-sites/agilita-fashion/sections/Product/SearchResult.tsx": $$$$$$$$23,
-    "deco-sites/agilita-fashion/sections/Product/Wishlist.tsx": $$$$$$$$24,
-    "deco-sites/agilita-fashion/sections/Social/InstagramPosts.tsx": $$$$$$$$25,
-    "deco-sites/agilita-fashion/sections/Social/WhatsApp.tsx": $$$$$$$$26,
+      $$$$$$$$22,
+    "deco-sites/agilita-fashion/sections/Product/ProductShelf.tsx": $$$$$$$$23,
+    "deco-sites/agilita-fashion/sections/Product/SearchResult.tsx": $$$$$$$$24,
+    "deco-sites/agilita-fashion/sections/Product/Wishlist.tsx": $$$$$$$$25,
+    "deco-sites/agilita-fashion/sections/Social/InstagramPosts.tsx": $$$$$$$$26,
+    "deco-sites/agilita-fashion/sections/Social/WhatsApp.tsx": $$$$$$$$27,
     "deco-sites/std/sections/Analytics.tsx": i2$$$$3,
     "deco-sites/std/sections/configButterCMS.global.tsx": i2$$$$4,
     "deco-sites/std/sections/configOCC.global.tsx": i2$$$$5,
