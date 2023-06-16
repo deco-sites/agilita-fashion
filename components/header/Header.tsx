@@ -7,6 +7,7 @@ import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import NavbarScroll from "./NavbarScroll.tsx";
+import NavbarBlack from "./NavbarBlack.tsx";
 
 import { headerHeight } from "./constants.ts";
 
@@ -54,6 +55,8 @@ export interface Props {
 function colorHeader() {
   let header1: Element | null;
   let header2: Element | null;
+  let header3: Element | null;
+
   globalThis.addEventListener("scroll", () => {
     if (!header1) {
       header1 = document.querySelector("div[header-Position]");
@@ -76,31 +79,32 @@ function colorHeader() {
       header2.classList.add("hidden");
     }
   });
-  globalThis.addEventListener("scroll", () => {
+  globalThis.addEventListener("load", () => {
     if (!header1) {
       header1 = document.querySelector("div[header-Position]");
       if (!header1) return;
     }
 
     if (!header1) return;
-    if (!header2) {
-      header2 = document.querySelector("div[header-2]");
-      if (!header2) return;
+    if (!header3) {
+      header3 = document.querySelector("div[header-3]");
+      if (!header3) return;
     }
 
-    if (!header2) return;
+    if (!header3) return;
 
     if (window.location.pathname !== "/") {
-      header1.classList.remove("bg-transparent ");
-      header1.classList.remove("absolute");
-      header1.classList.add("bg-white");
-      header1.classList.add("relative");
+      header3.classList.remove("hidden")
+      header3.classList.remove("bg-transparent");
+      header3.classList.remove("absolute");
+      header3.classList.add("bg-white");
+      header3.classList.add("relative");
  
     } else {
-      header1.classList.add("bg-transparent ");
-      header1.classList.add("absolute");
-      header1.classList.remove("bg-white");
-      header1.classList.remove("relative");
+      header3.classList.add("bg-transparent ");
+      header3.classList.add("absolute");
+      header3.classList.remove("bg-white");
+      header3.classList.remove("relative");
     }
   });
 }
@@ -127,6 +131,10 @@ function Header({
 
         <div class="hidden bg-white  fixed w-full z-50 " header-2="">
           <NavbarScroll items={navItems} searchbar={searchbar} logo={logo} />
+        </div>
+
+        <div class="hidden bg-white  fixed w-full z-50 " header-3="">
+          <NavbarBlack items={navItems} searchbar={searchbar} logo={logo} />
         </div>
 
         <Modals

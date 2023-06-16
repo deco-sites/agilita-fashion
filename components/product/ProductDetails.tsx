@@ -1,4 +1,8 @@
 import { useId } from "preact/hooks";
+import { useUI } from "$store/sdk/useUI.ts";
+import Modal from "$store/components/ui/Modal.tsx";
+import { lazy, Suspense } from "preact/compat";
+
 import AddToCartButton from "$store/islands/AddToCartButton.tsx";
 import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
@@ -29,11 +33,16 @@ export interface Props {
    */
   variant?: Variant;
 }
+const { displaySearchbar } = useUI();
 
 const WIDTH = 360;
 const HEIGHT = 500;
 const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
-
+const fallback = (
+  <div class="flex justify-center items-center w-full h-full">
+    <span class="loading loading-ring" />
+  </div>
+);
 /**
  * Rendered when a not found is returned by any of the loaders run on this page
  */
@@ -66,32 +75,31 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
   const { price, listPrice, seller, installments, availability } = useOffer(
     offers,
   );
+  const { displaySearchbar } = useUI();
 
   return (
     <>
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
-      />
       {/* Code and name */}
-      <div class="mt-4 sm:mt-8">
+      <div class="mt-4">
+        <h1>
+          <span class="text-[22px] tracking-[4px]">
+            {product.isVariantOf!.name?.toUpperCase()}
+          </span>
+        </h1>
         <div>
-          <span class="text-sm text-base-300">
-            Cod. {gtin}
+          <span class="text-[10px] text-[#737373]">
+            {gtin}
           </span>
         </div>
-        <h1>
-          <span class="font-medium text-xl">{name}</span>
-        </h1>
       </div>
       {/* Prices */}
       <div class="mt-4">
-        <div class="flex flex-row gap-2 items-center">
-          <span class="line-through text-base-300 text-xs">
-            {formatPrice(listPrice, offers!.priceCurrency!)}
-          </span>
-          <span class="font-medium text-xl text-secondary">
+        <div class="flex flex-col gap-2 my-8 items-start">
+          <span class="text-[14px] text-black">
             {formatPrice(price, offers!.priceCurrency!)}
+          </span>
+          <span class="line-through text-base-300 text-xs">
+            ou 6x de{formatPrice(price! / 6, offers!.priceCurrency!)}
           </span>
         </div>
         <span class="text-sm text-base-300">
@@ -103,7 +111,8 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
         <ProductSelector product={product} />
       </div>
       {/* Add to Cart and Favorites button */}
-      <div class="mt-4 sm:mt-10 flex flex-col gap-2">
+      {
+        /* <div class="mt-4 sm:mt-10 flex flex-col gap-2">
         {availability === "https://schema.org/InStock"
           ? (
             <>
@@ -125,26 +134,53 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
             </>
           )
           : <OutOfStock productID={productID} />}
+      </div> */
+      }
+      <p class="uppercase my-4 text-[12px] font-bold">
+        Atenção: Agilità e Fabulous Agilità possuem medidas distintas. Confira
+        abaixo a tabela deste produto.
+      </p>
+
+      <div class="my-8  w-[145px] border boder-[#000000] hover:bg-[#464646] hover:text-black  py-[10px] hover:text-white text-center">
+        <a
+          class="uppercase text-[12px] "
+          onClick={() => displaySearchbar.value = !displaySearchbar}
+        >
+          GUIA DE MEDIDAS
+        </a>
       </div>
-      {/* Shipping Simulation */}
-      <div class="mt-8">
-        <ShippingSimulation
-          items={[{
-            id: Number(product.sku),
-            quantity: 1,
-            seller: seller ?? "1",
-          }]}
-        />
+
+      <div class="mt-8  w-full bg-[#464646]  py-[10px] text-white text-center">
+        <a class="uppercase text-[14px]">
+          Adicionar à sacola
+        </a>
       </div>
+
+ 
       {/* Description card */}
       <div class="mt-4 sm:mt-6">
-        <span class="text-sm">
+        <span class="text-[11px] uppercase tracking-[2px]">
           {description && (
             <details>
-              <summary class="cursor-pointer">Descrição</summary>
+              <summary class="cursor-pointer border-b pb-2 border-[#929090]">
+                Descrição
+              </summary>
               <div class="ml-2 mt-2">{description}</div>
             </details>
           )}
+        </span>
+      </div>
+      <div class="mt-4 sm:mt-6">
+        <span class="text-[11px] uppercase tracking-[2px]">
+        {product.isVariantOf!.additionalProperty![1].value !== undefined && (
+           <details>
+           <summary class="cursor-pointer border-b pb-2 border-[#929090]">
+             COMPOSIÇÃO
+           </summary>
+           <div class="ml-2 mt-2">{product.isVariantOf!.additionalProperty![1].value?.toUpperCase()}</div>
+         </details>
+          )}
+          
         </span>
       </div>
       {/* Analytics Event */}
@@ -233,7 +269,10 @@ function Details({
   page,
   variant,
 }: { page: ProductDetailsPage; variant: Variant }) {
-  const { product } = page;
+  const {
+    breadcrumbList,
+    product,
+  } = page;
   const id = `product-image-gallery:${useId()}`;
   const images = useStableImages(product);
 
@@ -247,13 +286,17 @@ function Details({
   if (variant === "slider") {
     return (
       <>
+        <Breadcrumb
+          itemListElement={breadcrumbList?.itemListElement.slice(0, -1)}
+        />
+
         <div
           id={id}
-          class="grid grid-cols-1 gap-4 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
+          class="grid grid-cols-1 pl-[150px] gap-2 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
         >
           {/* Image Slider */}
-          <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1">
-            <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw]">
+          <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1 ">
+            <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw] ">
               {images.map((img, index) => (
                 <Slider.Item
                   index={index}
@@ -275,37 +318,17 @@ function Details({
               ))}
             </Slider>
 
-            <Slider.PrevButton
-              class="no-animation absolute left-2 top-1/2 btn btn-circle btn-outline"
-              disabled
-            >
-              <Icon size={20} id="ChevronLeft" strokeWidth={3} />
-            </Slider.PrevButton>
 
-            <Slider.NextButton
-              class="no-animation absolute right-2 top-1/2 btn btn-circle btn-outline"
-              disabled={images.length < 2}
-            >
-              <Icon size={20} id="ChevronRight" strokeWidth={3} />
-            </Slider.NextButton>
-
-            <div class="absolute top-2 right-2 bg-base-100 rounded-full">
-              <ProductImageZoom
-                images={images}
-                width={1280}
-                height={1280 * HEIGHT / WIDTH}
-              />
-            </div>
           </div>
 
           {/* Dots */}
-          <ul class="flex gap-2 sm:justify-start overflow-auto px-4 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
+          <ul class="flex gap-2 sm:justify-start overflow-auto px-2 sm:px-0 sm:flex-col sm:col-start-1 sm:col-span-1 sm:row-start-1">
             {images.map((img, index) => (
               <li class="min-w-[63px] sm:min-w-[100px]">
                 <Slider.Dot index={index}>
                   <Image
                     style={{ aspectRatio: ASPECT_RATIO }}
-                    class="group-disabled:border-base-300 border rounded "
+                    class="group-disabled:border-base-300 border"
                     width={63}
                     height={87.5}
                     src={img.url!}
@@ -317,7 +340,7 @@ function Details({
           </ul>
 
           {/* Product Info */}
-          <div class="px-4 sm:pr-0 sm:pl-6 sm:col-start-3 sm:col-span-1 sm:row-start-1">
+          <div class="px-4 sm:pr-0 sm:pl-0 ml-[90px] sm:col-start-3 sm:col-span-1 sm:row-start-1 w-[415px]">
             <ProductInfo page={page} />
           </div>
         </div>
@@ -374,7 +397,7 @@ function ProductDetails({ page, variant: maybeVar = "auto" }: Props) {
     : maybeVar;
 
   return (
-    <div class="container py-0 sm:py-10">
+    <div class="container  py-0 sm:py-10 px-4">
       {page ? <Details page={page} variant={variant} /> : <NotFound />}
     </div>
   );
