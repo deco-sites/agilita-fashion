@@ -33,7 +33,7 @@ function Result({
   variant,
 }: Omit<Props, "page"> & { page: ProductListingPage }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
-
+  console.log(variant)
   return (
     <>
       <div class="container px-4 sm:py-10">

@@ -22,20 +22,21 @@ export type Props = Pick<ProductListingPage, "sortOptions">;
 
 function Sort({ sortOptions }: Props) {
   const sort = useSort();
-
-  return (
+  return (<>
+    <span class="text-[14px]">Ordenar por : </span>
     <select
       id="sort"
       name="sort"
       onInput={applySort}
-      class="w-min h-[36px] px-1 rounded m-2 text-base-content cursor-pointer outline-none"
+      class="w-min h-[36px] px-1 rounded-none bg-transparent m-2 cursor-pointer outline-none border-b border-[#242424]"
     >
       {sortOptions.map(({ value, label }) => (
         <option key={value} value={value} selected={value === sort}>
-          <span class="text-sm">{label}</span>
+          <span class="text-[12px] uppercase ">{label}</span>
         </option>
       ))}
     </select>
+    </>
   );
 }
 

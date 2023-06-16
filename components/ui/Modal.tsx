@@ -24,19 +24,19 @@ export type Props = JSX.IntrinsicElements["dialog"] & {
 const dialogStyles = {
   "sidebar-right": "animate-slide-left",
   "sidebar-left": "animate-slide-right",
-  center: "animate-fade-in",
+  "center": "animate-fade-in",
 };
 
 const sectionStyles = {
   "sidebar-right": "justify-end",
   "sidebar-left": "justify-start",
-  center: "justify-center items-center",
+  "center": "justify-center items-center",
 };
 
 const containerStyles = {
   "sidebar-right": "h-full w-full sm:max-w-lg",
   "sidebar-left": "h-full w-full sm:max-w-lg",
-  center: "",
+  "center": "h-[50%] w-full container",
 };
 
 const Modal = ({
