@@ -72,11 +72,19 @@ function colorHeader() {
     if (!header2) return;
 
     if (window.scrollY > 200) {
-      header1.classList.add("hidden");
+      header1.classList.add("sm:hidden");
+      
+      header2.classList.remove("sm:hidden");
       header2.classList.remove("hidden");
+      header2.classList.add("sm:flex");
+      header2.classList.add("flex");
     } else {
-      header1.classList.remove("hidden");
+      header1.classList.remove("sm:hidden");
+      header2.classList.add("sm:hidden");
       header2.classList.add("hidden");
+
+      header2.classList.remove("sm:flex");
+      header2.classList.remove("flex");
     }
   });
   globalThis.addEventListener("load", () => {
@@ -94,6 +102,9 @@ function colorHeader() {
     if (!header3) return;
 
     if (window.location.pathname !== "/") {
+      header1.classList.add("sm:hidden");
+      header1.classList.add("hidden");
+      header3.classList.remove("sm:hidden")
       header3.classList.remove("hidden")
       header3.classList.remove("bg-transparent");
       header3.classList.remove("absolute");
@@ -101,8 +112,12 @@ function colorHeader() {
       header3.classList.add("relative");
  
     } else {
+      header1.classList.remove("sm:hidden");
+      header1.classList.remove("hidden");
       header3.classList.add("bg-transparent ");
       header3.classList.add("absolute");
+      header3.classList.add("sm:hidden")
+      header3.classList.add("hidden")
       header3.classList.remove("bg-white");
       header3.classList.remove("relative");
     }
@@ -124,16 +139,16 @@ function Header({
         dangerouslySetInnerHTML={{ __html: `(${colorHeader.toString()})()` }}
       />
       <header>
-        <div class="bg-transparent  absolute w-full z-50 " header-Position="">
+        <div class="bg-white sm:bg-transparent  absolute w-full z-50 " header-Position="">
           <Alert alerts={alerts} />
           <Navbar items={navItems} searchbar={searchbar} logo={logo} />
         </div>
 
-        <div class="hidden bg-white  fixed w-full z-50 " header-2="">
+        <div class="sm:hidden bg-white hidden   fixed w-full z-50 " header-2="">
           <NavbarScroll items={navItems} searchbar={searchbar} logo={logo} />
         </div>
 
-        <div class="hidden bg-white  fixed w-full z-50 " header-3="">
+        <div class="sm:hidden  bg-white hidden absolute fixed w-full z-50 " header-3="">
           <NavbarBlack items={navItems} searchbar={searchbar} logo={logo} />
         </div>
 

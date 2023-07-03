@@ -31,7 +31,8 @@ function NavItem({ item }: { item: INavItem }) {
       {children && children.length > 0 &&
         (
           <div
-            class={`fixed hidden mt-[130px] hover:flex group-hover/edit:flex bg-base-100 z-50 items-center justify-center gap-6 border-b-2 border-base-200 w-screen`}
+            class={`fixed hidden mt-[130px] hover:flex group-hover/edit:flex bg-base-100 z-50 
+            items-center justify-center gap-6 border-b-2 border-base-200 w-screen`}
             nav-height=""
             style={{ top: "0px", left: "0px" }}
           >
