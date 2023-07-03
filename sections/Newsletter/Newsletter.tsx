@@ -68,12 +68,12 @@ export default function Newsletter(props: Props) {
     <form action="/" class="flex flex-col gap-4">
       <div class="flex flex-col justify-center items-center lg:flex-row gap-3">
         <input
-          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px]"
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px] focus:outline-none "
           type="text"
           placeholder={form.placeholder2}
         />
         <input
-          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px]"
+          class="hover:border-black  hover:text-black border-b text-[12px] text-gray-400 w-[245px] focus:outline-none "
           type="text"
           placeholder={form.placeholder}
         />

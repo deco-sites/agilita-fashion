@@ -42,7 +42,7 @@ function Newsletter() {
         <div class="join">
           <input
             name="email"
-            class="flex-grow input input-primary join-item"
+            class="flex-grow input input-primary join-item focus:outline-none border-none"
             placeholder="Seu e-mail"
           />
           <button class="btn disabled:loading join-item" disabled={loading}>

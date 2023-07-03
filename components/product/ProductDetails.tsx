@@ -156,31 +156,38 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
         </a>
       </div>
 
- 
       {/* Description card */}
+
       <div class="mt-4 sm:mt-6">
-        <span class="text-[11px] uppercase tracking-[2px]">
+        <span class="text-[11px] tracking-[2px]">
           {description && (
             <details>
-              <summary class="cursor-pointer border-b pb-2 border-[#929090]">
+              <summary class="cursor-pointer uppercase border-b pb-2 border-[#929090]">
                 Descrição
               </summary>
-              <div class="ml-2 mt-2">{description}</div>
+              <div class="text-[#929090] tracking-[.12px] font-sans text-[12px]">
+              <div 
+                class="ml-2 mt-2 whitespace-pre-line text-[12px]  ;"
+                dangerouslySetInnerHTML={{ __html: description }}
+                />
+                </div>
             </details>
           )}
         </span>
       </div>
       <div class="mt-4 sm:mt-6">
         <span class="text-[11px] uppercase tracking-[2px]">
-        {product.isVariantOf!.additionalProperty![1].value !== undefined && (
-           <details>
-           <summary class="cursor-pointer border-b pb-2 border-[#929090]">
-             COMPOSIÇÃO
-           </summary>
-           <div class="ml-2 mt-2">{product.isVariantOf!.additionalProperty![1].value?.toUpperCase()}</div>
-         </details>
+          {product.isVariantOf!.additionalProperty![1].value !== undefined && (
+            <details>
+              <summary class="cursor-pointer border-b pb-2 border-[#929090]">
+                COMPOSIÇÃO
+              </summary>
+              <div class="ml-2 mt-2 font-sans text-[12px]" >
+                {product.isVariantOf!.additionalProperty![1].value
+                  ?.toUpperCase()}
+              </div>
+            </details>
           )}
-          
         </span>
       </div>
       {/* Analytics Event */}
@@ -317,8 +324,6 @@ function Details({
                 </Slider.Item>
               ))}
             </Slider>
-
-
           </div>
 
           {/* Dots */}
