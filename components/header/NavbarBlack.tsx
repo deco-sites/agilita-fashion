@@ -30,7 +30,7 @@ function Navbar({ items, searchbar, logo }: {
 
         <a
           href="/"
-          class="flex-grow inline-flex items-center"
+          class="flex-grow inline-flex justify-center items-center"
           style={{ minHeight: navbarHeight }}
           aria-label="Store logo"
         >

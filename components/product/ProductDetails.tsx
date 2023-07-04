@@ -299,18 +299,18 @@ function Details({
 
         <div
           id={id}
-          class="grid grid-cols-1 pl-[150px] gap-2 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
+          class="grid grid-cols-1 sm:pl-[150px] gap-2 sm:grid-cols-[max-content_40vw_40vw] sm:grid-rows-1 sm:justify-center"
         >
           {/* Image Slider */}
           <div class="relative sm:col-start-2 sm:col-span-1 sm:row-start-1 ">
-            <Slider class="carousel carousel-center gap-6 w-screen sm:w-[40vw] ">
+            <Slider class="carousel carousel-center gap-6 w-[90vw] sm:w-[40vw] ">
               {images.map((img, index) => (
                 <Slider.Item
                   index={index}
-                  class="carousel-item w-full"
+                  class="carousel-item sm:w-full w-[90vw]"
                 >
                   <Image
-                    class="w-full"
+                    class="sm:w-full w-[95vw]"
                     sizes="(max-width: 640px) 100vw, 40vw"
                     style={{ aspectRatio: ASPECT_RATIO }}
                     src={img.url!}
@@ -345,7 +345,7 @@ function Details({
           </ul>
 
           {/* Product Info */}
-          <div class="px-4 sm:pr-0 sm:pl-0 ml-[90px] sm:col-start-3 sm:col-span-1 sm:row-start-1 w-[415px]">
+          <div class="sm:px-4 sm:pr-0 sm:pl-0 sm:ml-[90px] sm:col-start-3 sm:col-span-1 sm:row-start-1 w-full sm:w-[415px]">
             <ProductInfo page={page} />
           </div>
         </div>
