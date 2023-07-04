@@ -243,7 +243,7 @@ function ProductCard({ product, preload, itemListName, layout }: Props) {
                 ? ""
                 : (
                   <p class="truncate text-sm lg:text-sm  text-black">
-                    {product.description}
+                   {product.isVariantOf!.name?.toUpperCase()}
                   </p>
                 )}
             </div>

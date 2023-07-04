@@ -167,7 +167,7 @@ function ProductInfo({ page }: { page: ProductDetailsPage }) {
               </summary>
               <div class="text-[#929090] tracking-[.12px] font-sans text-[12px]">
               <div 
-                class="ml-2 mt-2 whitespace-pre-line text-[12px]  ;"
+                class="ml-2 mt-2 whitespace-pre-line text-[12px] "
                 dangerouslySetInnerHTML={{ __html: description }}
                 />
                 </div>
