@@ -62,62 +62,63 @@ function ProductShelf({
   }
 
   return (
-    <div class="w-full container rounded-none  py-8 flex flex-col gap-12  ">
+    <div class="w-full justify-center rounded-none  py-8 flex flex-col gap-12  ">
       <Header
         title={title || ""}
         description={description || ""}
         fontSize={layout?.headerfontSize || "Large"}
         alignment={layout?.headerAlignment || "center"}
       />
-
-      <div
-        id={id}
-        class="container grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
-      >
-        <Slider class="carousel  carousel-center sm:carousel-end gap-1 col-span-full row-start-2 row-end-5">
-          {products?.map((product, index) => (
-            <Slider.Item
-              index={index}
-              class="carousel-item w-[270px] sm:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
-            >
-              <ProductCard
-                product={product}
-                itemListName={title}
-                layout={cardLayout}
-              />
-            </Slider.Item>
-          ))}
-        </Slider>
- 
-        {/* <>
-          <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
-            <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
-              <Icon size={20} id="ChevronLeft" strokeWidth={3} />
-            </Slider.PrevButton>
-          </div>
-          <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
-            <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-base-100">
-              <Icon size={20} id="ChevronRight" strokeWidth={3} />
-            </Slider.NextButton>
-          </div>
-        </> */}
-      
-        <SliderJS rootId={id} />
-        <SendEventOnLoad
-          event={{
-            name: "view_item_list",
-            params: {
-              item_list_name: title,
-              items: products.map((product) =>
-                mapProductToAnalyticsItem({
-                  product,
-                  ...(useOffer(product.offers)),
-                })
-              ),
-            },
-          }}
-        />
-      </div>
+      <div class="w-full flex justify-center  aling-center ">
+        <div
+          id={id}
+          class=" grid grid-cols-[48px_1fr_48px] px-0 sm:px-5"
+        >
+          <Slider class="carousel  carousel-center sm:carousel-end gap-1 col-span-full row-start-2 row-end-5">
+            {products?.map((product, index) => (
+              <Slider.Item
+                index={index}
+                class="carousel-item w-[270px] sm:w-[400px] first:pl-6 sm:first:pl-0 last:pr-6 sm:last:pr-0"
+              >
+                <ProductCard
+                  product={product}
+                  itemListName={title}
+                  layout={cardLayout}
+                />
+              </Slider.Item>
+            ))}
+          </Slider>
+  
+          {/* <>
+            <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
+              <Slider.PrevButton class="btn btn-circle btn-outline absolute right-1/2 bg-base-100">
+                <Icon size={20} id="ChevronLeft" strokeWidth={3} />
+              </Slider.PrevButton>
+            </div>
+            <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
+              <Slider.NextButton class="btn btn-circle btn-outline absolute left-1/2 bg-base-100">
+                <Icon size={20} id="ChevronRight" strokeWidth={3} />
+              </Slider.NextButton>
+            </div>
+          </> */}
+        
+          <SliderJS rootId={id} />
+          <SendEventOnLoad
+            event={{
+              name: "view_item_list",
+              params: {
+                item_list_name: title,
+                items: products.map((product) =>
+                  mapProductToAnalyticsItem({
+                    product,
+                    ...(useOffer(product.offers)),
+                  })
+                ),
+              },
+            }}
+          />
+        </div>
+        </div>
     </div>
   );
 }
