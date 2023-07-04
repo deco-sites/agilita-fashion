@@ -34,7 +34,11 @@ function Navbar({ items, searchbar, logo }: {
           style={{ minHeight: navbarHeight }}
           aria-label="Store logo"
         >
-          <Icon id="Logo" width={126} height={16} />
+          <img
+                src={logo.black}
+                alt="logo"
+                class="hover:hidden object-cover w-[70px]"
+              />
         </a>
 
         <div class="flex gap-1">
