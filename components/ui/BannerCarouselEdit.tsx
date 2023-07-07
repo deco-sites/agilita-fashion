@@ -41,10 +41,10 @@ export interface Props {
   interval?: number;
 }
 
-function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean },{titleDesktop,
-  titleMobile,
-  titleSubDesktop,
-  titleSubMobile}:Props ) {
+function BannerItem(
+  { image, lcp }: { image: Banner; lcp?: boolean },
+  { titleDesktop, titleMobile, titleSubDesktop, titleSubMobile }: Props,
+) {
   const {
     alt,
     mobile,
@@ -54,50 +54,49 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean },{titleDeskt
   } = image;
 
   return (
-    <div class="flex flex-col itens-center justify-center w-full overflow-y-hidden"> 
-    <a
-      href={href ?? "#"}
-      aria-label={label}
-      class="flex itens-center justify-center w-full overflow-y-hidden px-8  lg:px-0"
-    >
-      <Picture preload={lcp}>
-        <Source
-          media="(max-width: 767px)"
-          fetchPriority={lcp ? "high" : "auto"}
-          src={mobile}
-          width={480}
-          height={720}
-        />
-        <Source
-          media="(min-width: 768px)"
-          fetchPriority={lcp ? "high" : "auto"}
-          src={desktop}
-          width={480}
-          height={720}
-        />
-        <img
-          class="object-cover"
-          loading={lcp ? "eager" : "lazy"}
-          src={desktop}
-          alt={alt}
-        />
-      </Picture>
-  
-    </a>
-    
-    <div class="flex w-full items-center gap-4 flex-col justify-center my-[15px] ">
-    <span
-      class={`tracking-[4.2px]  text-[14px]`}
-    >
-      {image.title}
-    </span>
-    <span
-      class={`font-normal text-[10px]`}
-    >
-      {image.titleSub}
-    </span>
-  </div>
-  </div>
+    <div class="flex flex-col itens-center justify-center w-full overflow-y-hidden">
+      <a
+        href={href ?? "#"}
+        aria-label={label}
+        class="flex itens-center justify-center w-full overflow-y-hidden px-8  lg:px-0"
+      >
+        <Picture preload={lcp}>
+          <Source
+            media="(max-width: 767px)"
+            fetchPriority={lcp ? "high" : "auto"}
+            src={mobile}
+            width={480}
+            height={720}
+          />
+          <Source
+            media="(min-width: 768px)"
+            fetchPriority={lcp ? "high" : "auto"}
+            src={desktop}
+            width={480}
+            height={720}
+          />
+          <img
+            class="object-cover"
+            loading={lcp ? "eager" : "lazy"}
+            src={desktop}
+            alt={alt}
+          />
+        </Picture>
+      </a>
+
+      <div class="flex w-full items-center gap-4 flex-col justify-center my-[15px] ">
+        <span
+          class={`tracking-[4.2px]  text-[14px]`}
+        >
+          {image.title}
+        </span>
+        <span
+          class={`font-normal text-[10px]`}
+        >
+          {image.titleSub}
+        </span>
+      </div>
+    </div>
   );
 }
 
@@ -172,15 +171,19 @@ function BannerCarousel(
   return (
     <div
       id={id}
-      class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] mb-[45px] mt-[80px]"
+      class=" grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] mb-[45px] mt-[80px]"
     >
-      <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none ">
+      <Slider class="container  carousel carousel-center col-span-full row-span-full scrollbar-none gap-[11vw] ">
+    
         {images?.map((image, index) => (
-          <Slider.Item index={index} class="carousel-item w-full">
+          <Slider.Item
+            index={index}
+            class={`carousel-item  ${index === 0 ? "ml-[-150px]": "" }   `}
+          >
             <BannerItem image={image} lcp={index === 0 && preload} />
-           
           </Slider.Item>
         ))}
+       
       </Slider>
 
       <Buttons />
