@@ -23,29 +23,42 @@ function NavbarScroll({ items, searchbar, logo }: {
       {/* Mobile Version */}
       <div
         style={{ height: navbarHeight }}
-        class="md:hidden  flex flex-row justify-between items-center border-b border-base-200 w-full pl-2 sm:pr-6 gap-2"
+        class="md:hidden  flex flex-row justify-center items-center border-b border-base-200 w-full "
       >
+        <div class='w-[33%]'>
         <Buttons variant="menu" />
-
+        </div>
         <a
           href="/"
-          class="flex-grow inline-flex justify-center items-center"
+          class="flex-grow inline-flex  justify-center items-center w-[33%] "
           style={{ minHeight: navbarHeight }}
           aria-label="Store logo"
         >
-           <img
-                src={logo.black}
-                alt="logo"
-                class="hover:hidden object-cover w-[70px]"
-              />
+          <img
+            src={logo.black}
+            alt="logo"
+            class="hover:hidden object-cover w-[70px]"
+          />
         </a>
 
-        <div class="flex gap-1">
+        <div class="flex justify-end gap-1 w-[33%] m-0 p-0">
           <Buttons variant="search" />
+
+          <a
+            class="btn btn-circle btn-sm btn-ghost"
+            href="/wishlist"
+            aria-label="Wishlist"
+          >
+            <Icon
+              id="Heart"
+              size={20}
+              strokeWidth={2}
+              fill="none"
+            />
+          </a>
           <Buttons variant="cart" />
         </div>
       </div>
-
       {/* Desktop Version */}
 
       <div class="hidden md:flex flex-row justify-between  items-center  w-full px-[100px]">
