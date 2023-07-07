@@ -34,12 +34,12 @@ function NavItemScroll({ item }: { item: INavItem }) {
             nav-height=""
             style={{ top: "0px", left: "0px" }}
           >
-            <div class=" mb-[30px] min-w-[400px]">
+            <div class="flex mb-[30px] min-w-[745px] justify-start">
               <ul class="flex flex-col gap-5 flex-wrap max-h-[250px] text-[10px] mt-4">
                 {children?.map((leaf) => (
                   <li>
                     <a class="hover:underline" href={leaf.href}>
-                      <span class="text-base">{leaf.label}</span>
+                      <span class="text-[10px]">{leaf.label}</span>
                     </a>
                   </li>
                 ))}

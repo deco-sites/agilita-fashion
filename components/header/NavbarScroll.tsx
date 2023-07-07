@@ -49,8 +49,8 @@ function NavbarScroll({ items, searchbar, logo }: {
       {/* Desktop Version */}
 
       <div class="hidden md:flex flex-row justify-between  items-center  w-full px-[100px]">
-        <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block px-4 py-3">
+        <div class="flex-none w-44 justify-center mr-[35px]">
+          <a href="/" aria-label="Store logo" class="flex px-4 py-3 justify-center">
             <img
               src={logo.black}
               alt="logo"

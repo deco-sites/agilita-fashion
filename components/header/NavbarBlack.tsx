@@ -97,8 +97,8 @@ function Navbar({ items, searchbar, logo }: {
             </a>
           </div>
 
-          <div class="flex-none w-44">
-            <a href="/" aria-label="Store logo" class="block px-4 py-3">
+          <div class="flex-none w-44 justify-center mr-[35px]">
+            <a href="/" aria-label="Store logo" class="flex px-4 py-3 justify-center">
               <img
                 src={logo.black}
                 alt="logo"
@@ -108,7 +108,7 @@ function Navbar({ items, searchbar, logo }: {
             </a>
           </div>
 
-          <div class="flex-none w-44 flex items-center justify-end gap-2">
+          <div class="flex-none w-44 flex items-center justify-end gap-[35px]">
             <div class="flex justify-center items-center flex-col  text-[10px]">
               <Buttons variant="search" />
               <span>BUSCA</span>
@@ -147,7 +147,7 @@ function Navbar({ items, searchbar, logo }: {
             </div>
           </div>
         </div>
-        <div class="flex-auto flex  items-center justify-center w-full  text-[12px]  xl:tracking-[2.2px]">
+        <div class="flex-auto flex  items-center justify-center w-full  gap-[100px]   text-[12px]  xl:tracking-[2.2px]">
           {items.map((item) => <NavItem item={item} />)}
         </div>
       </div>
